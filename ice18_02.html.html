@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Gang Ruan">
+<title>AJS-06</title>
+<style>
+body {
+	background-color:#DAC8A3;
+}
+</style>
+<script>
+var dudeImage = null;
+var animate;
+
+function init(){
+   dudeImage = document.getElementById('littleDude');
+   dudeImage.style.position = 'relative'; 
+   dudeImage.style.left = '0px'; 
+}
+function moveDudeR(){
+   clearTimeout(animate);
+   dudeImage.src="dude_right.png";
+   dudeImage.style.left = parseInt(dudeImage.style.left) + 16 + 'px';
+   animate = setTimeout(moveDudeR,32); 
+}
+function moveDudeL(){
+   clearTimeout(animate);
+   dudeImage.src="dude_left.png";
+   dudeImage.style.left = parseInt(dudeImage.style.left) - 16 + 'px';
+   animate = setTimeout(moveDudeL,32); 
+}
+function bringDudeHome(){
+   clearTimeout(animate);
+   dudeImage.style.left = '0px';
+}
+window.onload = init;
+</script>
+</head>
+<body>
+<h2>Animation JavaScript 06</h3>
+<form>
+<p>Click Buttons to Move The Dude</p>
+<input type="button" value="Walk The Dude Right" onclick="moveDudeR();">
+<input type="button" value="Bring The Dude Home" onclick="bringDudeHome();">
+<input type="button" value="Walk The Dude Left" onclick="moveDudeL();">
+<br><br>
+<img id="littleDude" src="dude_right.png" />
+</form>
+</body>
+</html>
